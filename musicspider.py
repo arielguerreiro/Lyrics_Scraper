@@ -3,13 +3,22 @@
 """
 Created on Wed Jan 29 21:27:45 2020
 
-@author: ariel
+@author: arielguerreiro
+
+This spider crawls by a given artist link in 'letras.mus.com,
+creates a folder with the artist name and create '.txt' files with 
+each of the lyrics for the 'top 20' songs of that artist
+in the website and stores in a file named by the song title
 """
 #reminder: scrapy runspider <name>
 import scrapy 
 import os
 
 def createFolder(directory):
+    '''
+    This function tries to create the directory,if it does not
+    exist. Created by https://github.com/keithweaver.
+    '''
     try:
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -21,7 +30,7 @@ class MusicSpider(scrapy.Spider):
     name = 'music spider'
     
     def start_requests(self):
-        start_urls = ['https://www.letras.mus.br/simon-e-garfunkel/']
+        start_urls = ['https://www.letras.mus.br/simon-e-garfunkel/'] # Simon and Garfunkel used in this example
         for url in start_urls:
             yield scrapy.Request(url = url, callback = self.parse_links)
             
