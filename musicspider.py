@@ -5,8 +5,8 @@ Created on Wed Jan 29 21:27:45 2020
 
 @author: arielguerreiro
 
-This spider crawls by a given artist link in 'letras.mus.com,
-creates a folder with the artist name and create '.txt' files with 
+This spider crawls by a given artist link in 'letras.mus.com',
+creates a folder with the artist name and creates '.txt' files with 
 each of the lyrics for the 'top 20' songs of that artist
 in the website and stores in a file named by the song title
 """
