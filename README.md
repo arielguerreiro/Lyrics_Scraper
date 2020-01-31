@@ -5,3 +5,5 @@ it will create a directory with the artist name and inside it will create 'txt' 
 top 20 songs of that artist, each named by the song and contaning its lyrics.
 
 To use it, run the 'main.py' file
+
+Libraries needed: scrapy, google, os
