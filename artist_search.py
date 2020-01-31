@@ -3,12 +3,16 @@
 """
 Created on Thu Jan 30 23:37:03 2020
 
-@author: ariel
+@author: arielguerreiro
 """
 
 from googlesearch import search
 
 def artist_link_search(to_search):
+    '''
+    This function searches google for the link to be used
+    by the 'music spider' crawler
+    '''
     # artist search
     query = '{} site:letras.mus.br'.format(str(to_search))
     artist_links = []
@@ -21,7 +25,11 @@ def artist_link_search(to_search):
                     pause = 0,  # Lapse between HTTP requests
                     ):
         artist_links.append(i)
+        
     filepath = 'start_url.txt'
     f = open(filepath, 'w')
-    f.write(artist_links[0])
+    if len(artist_links) > 0:
+        f.write(artist_links[0])
     f.close()
+    
+    return artist_links
