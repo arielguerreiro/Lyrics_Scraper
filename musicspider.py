@@ -5,7 +5,7 @@ Created on Wed Jan 29 21:27:45 2020
 
 @author: arielguerreiro
 
-This spider crawls by a given artist link in 'letras.mus.com',
+This spider crawls by a given artist link on 'letras.mus.com',
 creates a folder with the artist name and creates '.txt' files with 
 each of the lyrics for the 'top 20' songs of that artist
 in the website and stores in a file named by the song title
@@ -30,9 +30,10 @@ class MusicSpider(scrapy.Spider):
     name = 'music spider'
     
     def start_requests(self):
-        start_urls = ['https://www.letras.mus.br/simon-e-garfunkel/'] # Simon and Garfunkel used in this example
-        for url in start_urls:
-            yield scrapy.Request(url = url, callback = self.parse_links)
+        g = open('start_url.txt', 'r')
+        url = g.read()
+        os.remove('start_url.txt')
+        yield scrapy.Request(url = url, callback = self.parse_links)
             
     def parse_links(self, response):
         links = response.css('ol.cnt-list.cnt-list--num > li.cnt-list-row::attr(data-shareurl)').extract()
